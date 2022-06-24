@@ -1,10 +1,10 @@
 {
-  "name": "sh-nestjs-template",
+  "name": "nestjs-service-template",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "A bare bone tamplete for awesome NestJS applications",
+  "author": "Noesis Solutions",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
@@ -21,12 +21,27 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@automapper/classes": "^8.3.7",
+    "@automapper/core": "^8.3.7",
+    "@automapper/nestjs": "^8.3.7",
+    "@nestjs/axios": "^0.0.8",
     "@nestjs/common": "^8.0.0",
+    "@nestjs/config": "^2.1.0",
     "@nestjs/core": "^8.0.0",
+    "@nestjs/mapped-types": "^1.0.1",
     "@nestjs/platform-express": "^8.0.0",
+    "@nestjs/swagger": "^5.2.1",
+    "@nestjs/terminus": "^8.0.8",
+    "moment": "^2.29.3",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
+    "nest-winston": "^1.6.2",
+    "swagger-ui-express": "^4.4.0",
+    "winston": "^3.7.2",
+    "winston-daily-rotate-file": "^4.7.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",
@@ -66,6 +81,15 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "@app/(.*)": "<rootDir>/$1"
+    }
+  },
+  "engines": {
+    "node": "16.15.0"
+  },
+  "_moduleAliases": {
+    "@app": "./dist"
   }
 }
