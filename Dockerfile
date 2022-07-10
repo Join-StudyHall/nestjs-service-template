@@ -14,7 +14,7 @@ COPY . .
 
 RUN yarn run build
 
-FROM node:16.15.0 AS production
+FROM node:16.15.0-slim AS production
 
 WORKDIR /app
 
