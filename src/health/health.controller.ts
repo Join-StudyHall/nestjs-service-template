@@ -20,7 +20,8 @@ export class HealthController {
   @HealthCheck()
   check() {
     return this.health.check([
-      () => this.http.pingCheck('API', 'http://localhost:3000/')
+      () =>
+        this.http.pingCheck('API', `http://localhost:${process.env.APP_PORT}`),
     ]);
   }
 }

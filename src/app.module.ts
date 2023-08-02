@@ -12,7 +12,7 @@ import { ValidationError } from 'class-validator';
 @Module({
   imports: [
     HealthModule,
-    ConfigModule.forRoot({ isGlobal: true, load: [configuration] }),
+    ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env.local', load: [configuration] }),
     AutomapperModule.forRoot({
       strategyInitializer: classes(),
     }),
