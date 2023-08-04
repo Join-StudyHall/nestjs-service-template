@@ -1,9 +1,11 @@
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { AutomapperModule } from '@automapper/nestjs';
-import { classes } from '@automapper/classes';
+import { ConfigModule } from '@nestjs/config';
 import configuration from '@app/app.config';
-import { Module, ValidationPipe, UnprocessableEntityException} from '@nestjs/common';
-import { APP_GUARD, APP_FILTER, APP_PIPE } from '@nestjs/core';
+import {
+  Module,
+  ValidationPipe,
+  UnprocessableEntityException,
+} from '@nestjs/common';
+import { APP_FILTER, APP_PIPE } from '@nestjs/core';
 import { AppService } from '@app/app.service';
 import { HealthModule } from '@app/health/health.module';
 import { AllExceptionsFilter } from '@app/all-exceptions.filter';
@@ -12,12 +14,14 @@ import { ValidationError } from 'class-validator';
 @Module({
   imports: [
     HealthModule,
-    ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env.local', load: [configuration] }),
-    AutomapperModule.forRoot({
-      strategyInitializer: classes(),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: '.env.local',
+      load: [configuration],
     }),
   ],
-  providers: [AppService,
+  providers: [
+    AppService,
     {
       provide: APP_PIPE,
       useValue: new ValidationPipe({
@@ -36,8 +40,7 @@ import { ValidationError } from 'class-validator';
 })
 export class AppModule {}
 
-
-const formatErrors = (errors: ValidationError[], parentName: string = '') => {
+const formatErrors = (errors: ValidationError[], parentName = '') => {
   const formattedErrors = [];
 
   for (const error of errors) {
