@@ -1,4 +1,4 @@
-FROM node:16.15.0 AS builder
+FROM node:18.17.1 AS builder
 
 RUN apt update
 RUN apt install dumb-init
@@ -14,7 +14,7 @@ COPY . .
 
 RUN yarn run build
 
-FROM node:16.15.0-slim AS production
+FROM node:18.17.1-slim AS production
 
 WORKDIR /app
 
